@@ -1,4 +1,5 @@
 using InventoryManager.Models;
+using InventoryManager.Forms;
 
 namespace InventoryManager
 {
@@ -35,6 +36,12 @@ namespace InventoryManager
                 Min = 1,
                 Max = 100
             });
+        }
+
+        private void btnAddPart_Click(object sender, EventArgs e)
+        {
+            using var dlg = new AddPartForm();
+            var result = dlg.ShowDialog(this);
         }
     }
 }

@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|D:\\WGU\\C968 - Software I C#\\InventoryManager\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\forms\\addpartform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:forms\\addpartform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\forms\\addpartform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:forms\\addpartform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\forms\\addpartform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:forms\\addpartform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|d:\\wgu\\c968 - software i c#\\inventorymanager\\models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EED780D-6FDA-4AF5-A2B3-E1D12B288DC8}|InventoryManager.csproj|solutionrelative:models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,37 +38,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.Designer.cs",
-              "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\MainForm.Designer.cs",
-              "RelativeDocumentMoniker": "MainForm.Designer.cs",
-              "ToolTip": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\MainForm.Designer.cs",
-              "RelativeToolTip": "MainForm.Designer.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAuwC8AAAAPAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AddPartForm.Designer.cs",
+              "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\AddPartForm.Designer.cs",
+              "ToolTip": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.Designer.cs",
+              "RelativeToolTip": "Forms\\AddPartForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T04:58:55.214Z",
+              "WhenOpened": "2025-11-05T20:10:14.292Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "AddPartForm.cs",
+              "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.cs",
+              "RelativeDocumentMoniker": "Forms\\AddPartForm.cs",
+              "ToolTip": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.cs",
+              "RelativeToolTip": "Forms\\AddPartForm.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA0wBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:04:07.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddPartForm.cs [Design]",
+              "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.cs",
+              "RelativeDocumentMoniker": "Forms\\AddPartForm.cs",
+              "ToolTip": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Forms\\AddPartForm.cs [Design]",
+              "RelativeToolTip": "Forms\\AddPartForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:03:46.958Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainForm.cs",
               "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
               "ToolTip": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\MainForm.cs",
               "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-05T04:53:34.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Inventory.cs",
               "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Models\\Inventory.cs",
               "RelativeDocumentMoniker": "Models\\Inventory.cs",
@@ -68,12 +101,11 @@
               "RelativeToolTip": "Models\\Inventory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T04:07:06.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T04:07:06.215Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Models\\Product.cs",
@@ -86,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "D:\\WGU\\C968 - Software I C#\\InventoryManager\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",

@@ -30,6 +30,7 @@
         {
             dgvParts = new DataGridView();
             dgvProducts = new DataGridView();
+            btnAddPart = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -38,31 +39,42 @@
             // 
             dgvParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvParts.Location = new Point(433, 92);
+            dgvParts.Location = new Point(23, 105);
             dgvParts.MultiSelect = false;
             dgvParts.Name = "dgvParts";
             dgvParts.ReadOnly = true;
             dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvParts.Size = new Size(240, 150);
+            dgvParts.Size = new Size(341, 219);
             dgvParts.TabIndex = 0;
             // 
             // dgvProducts
             // 
             dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(433, 267);
+            dgvProducts.Location = new Point(403, 105);
             dgvProducts.MultiSelect = false;
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;
             dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new Size(240, 150);
+            dgvProducts.Size = new Size(366, 219);
             dgvProducts.TabIndex = 1;
+            // 
+            // btnAddPart
+            // 
+            btnAddPart.Location = new Point(209, 350);
+            btnAddPart.Name = "btnAddPart";
+            btnAddPart.Size = new Size(75, 23);
+            btnAddPart.TabIndex = 2;
+            btnAddPart.Text = "Add";
+            btnAddPart.UseVisualStyleBackColor = true;
+            btnAddPart.Click += btnAddPart_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAddPart);
             Controls.Add(dgvProducts);
             Controls.Add(dgvParts);
             Name = "MainForm";
@@ -76,5 +88,6 @@
 
         private DataGridView dgvParts;
         private DataGridView dgvProducts;
+        private Button btnAddPart;
     }
 }
