@@ -28,13 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Inventory Manager";
-            this.Name = "MainForm";
+            dgvParts = new DataGridView();
+            dgvProducts = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvParts
+            // 
+            dgvParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvParts.Location = new Point(433, 92);
+            dgvParts.MultiSelect = false;
+            dgvParts.Name = "dgvParts";
+            dgvParts.ReadOnly = true;
+            dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvParts.Size = new Size(240, 150);
+            dgvParts.TabIndex = 0;
+            // 
+            // dgvProducts
+            // 
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.Location = new Point(433, 267);
+            dgvProducts.MultiSelect = false;
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.ReadOnly = true;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.Size = new Size(240, 150);
+            dgvProducts.TabIndex = 1;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dgvProducts);
+            Controls.Add(dgvParts);
+            Name = "MainForm";
+            Text = "Inventory Manager";
+            ((System.ComponentModel.ISupportInitialize)dgvParts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgvParts;
+        private DataGridView dgvProducts;
     }
 }
