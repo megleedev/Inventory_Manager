@@ -98,7 +98,6 @@
             lblName.Size = new Size(39, 15);
             lblName.TabIndex = 4;
             lblName.Text = "Name";
-            lblName.Click += label2_Click;
             // 
             // lblInStock
             // 
@@ -203,6 +202,7 @@
             btnSave.TabIndex = 19;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -245,7 +245,6 @@
             Name = "AddPartForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Add Part";
-            Load += AddPartForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

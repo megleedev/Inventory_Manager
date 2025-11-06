@@ -39,19 +39,19 @@
             // 
             dgvParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvParts.Location = new Point(23, 105);
+            dgvParts.Location = new Point(12, 105);
             dgvParts.MultiSelect = false;
             dgvParts.Name = "dgvParts";
             dgvParts.ReadOnly = true;
             dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvParts.Size = new Size(341, 219);
+            dgvParts.Size = new Size(360, 219);
             dgvParts.TabIndex = 0;
             // 
             // dgvProducts
             // 
             dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(403, 105);
+            dgvProducts.Location = new Point(422, 105);
             dgvProducts.MultiSelect = false;
             dgvProducts.Name = "dgvProducts";
             dgvProducts.ReadOnly = true;

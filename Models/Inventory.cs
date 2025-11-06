@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 
 namespace InventoryManager.Models
 {
@@ -12,7 +13,9 @@ namespace InventoryManager.Models
         private static int _nextPartID = 1;
         private static int _nextProductID = 1;
         public static int NextPartID() => _nextPartID++;
+        public static int PeekNextPartID() => _nextPartID;
         public static int NextProductID() => _nextProductID++;
+        public static int PeekNextProductID() => _nextProductID;
 
         // Part methods
         public static void addPart(Part part)
@@ -22,7 +25,7 @@ namespace InventoryManager.Models
 
         public static bool deletePart(Part part)
         {
-            bool isAssociated = Products.Any(prod => prod.AssociatedParts.Contains(part));
+            bool isAssociated = Products.Any(prod => prod.AssociatedParts.Any(ap => ap.PartID == part.PartID));
 
             if (isAssociated)
             {
