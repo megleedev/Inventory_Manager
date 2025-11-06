@@ -4,6 +4,9 @@
     <Compile Update="Forms\AddPartForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ModifyPartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -31,6 +31,7 @@
             dgvParts = new DataGridView();
             dgvProducts = new DataGridView();
             btnAddPart = new Button();
+            btnModifyPart = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -69,11 +70,22 @@
             btnAddPart.UseVisualStyleBackColor = true;
             btnAddPart.Click += btnAddPart_Click;
             // 
+            // btnModifyPart
+            // 
+            btnModifyPart.Location = new Point(297, 350);
+            btnModifyPart.Name = "btnModifyPart";
+            btnModifyPart.Size = new Size(75, 23);
+            btnModifyPart.TabIndex = 3;
+            btnModifyPart.Text = "Modify";
+            btnModifyPart.UseVisualStyleBackColor = true;
+            btnModifyPart.Click += btnModifyPart_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnModifyPart);
             Controls.Add(btnAddPart);
             Controls.Add(dgvProducts);
             Controls.Add(dgvParts);
@@ -89,5 +101,6 @@
         private DataGridView dgvParts;
         private DataGridView dgvProducts;
         private Button btnAddPart;
+        private Button btnModifyPart;
     }
 }
