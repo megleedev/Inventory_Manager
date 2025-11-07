@@ -8,7 +8,7 @@ namespace InventoryManager.Forms
 {
     public partial class ModifyPartForm : Form
     {
-        private readonly Part _originalPart;
+        private readonly Part _originalPart = null!;
         private readonly int _rowIndex;
 
 
