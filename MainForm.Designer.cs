@@ -35,6 +35,9 @@
             btnDeletePart = new Button();
             txtSearchParts = new TextBox();
             btnSearchParts = new Button();
+            btnDeleteProduct = new Button();
+            btnModifyProduct = new Button();
+            btnAddProduct = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -110,11 +113,42 @@
             btnSearchParts.UseVisualStyleBackColor = true;
             btnSearchParts.Click += btnSearchParts_Click;
             // 
+            // btnDeleteProduct
+            // 
+            btnDeleteProduct.Location = new Point(713, 350);
+            btnDeleteProduct.Name = "btnDeleteProduct";
+            btnDeleteProduct.Size = new Size(75, 23);
+            btnDeleteProduct.TabIndex = 9;
+            btnDeleteProduct.Text = "Delete";
+            btnDeleteProduct.UseVisualStyleBackColor = true;
+            // 
+            // btnModifyProduct
+            // 
+            btnModifyProduct.Location = new Point(630, 350);
+            btnModifyProduct.Name = "btnModifyProduct";
+            btnModifyProduct.Size = new Size(75, 23);
+            btnModifyProduct.TabIndex = 8;
+            btnModifyProduct.Text = "Modify";
+            btnModifyProduct.UseVisualStyleBackColor = true;
+            // 
+            // btnAddProduct
+            // 
+            btnAddProduct.Location = new Point(549, 350);
+            btnAddProduct.Name = "btnAddProduct";
+            btnAddProduct.Size = new Size(75, 23);
+            btnAddProduct.TabIndex = 7;
+            btnAddProduct.Text = "Add";
+            btnAddProduct.UseVisualStyleBackColor = true;
+            btnAddProduct.Click += btnAddProduct_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDeleteProduct);
+            Controls.Add(btnModifyProduct);
+            Controls.Add(btnAddProduct);
             Controls.Add(btnSearchParts);
             Controls.Add(txtSearchParts);
             Controls.Add(btnDeletePart);
@@ -139,5 +173,8 @@
         private Button btnDeletePart;
         private TextBox txtSearchParts;
         private Button btnSearchParts;
+        private Button btnDeleteProduct;
+        private Button btnModifyProduct;
+        private Button btnAddProduct;
     }
 }

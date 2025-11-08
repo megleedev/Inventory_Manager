@@ -96,5 +96,11 @@ namespace InventoryManager
             // Show only the matches
             dgvParts.DataSource = new BindingList<Part>(matches);
         }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            using var dlg = new AddProductForm();
+            dlg.ShowDialog(this);
+        }
     }
 }
