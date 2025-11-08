@@ -68,6 +68,7 @@
             btnSearchPartsForProduct.TabIndex = 65;
             btnSearchPartsForProduct.Text = "Search";
             btnSearchPartsForProduct.UseVisualStyleBackColor = true;
+            btnSearchPartsForProduct.Click += btnSearchPartsForProduct_Click;
             // 
             // btnAddPart
             // 
@@ -77,6 +78,7 @@
             btnAddPart.TabIndex = 64;
             btnAddPart.Text = "Add";
             btnAddPart.UseVisualStyleBackColor = true;
+            btnAddPart.Click += btnAddPart_Click;
             // 
             // btnDeletePart
             // 
@@ -86,6 +88,7 @@
             btnDeletePart.TabIndex = 63;
             btnDeletePart.Text = "Delete";
             btnDeletePart.UseVisualStyleBackColor = true;
+            btnDeletePart.Click += btnDeletePart_Click;
             // 
             // dgvAssociatedParts
             // 
@@ -111,6 +114,7 @@
             btnCancel.TabIndex = 60;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -120,6 +124,7 @@
             btnSave.TabIndex = 59;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // txtMin
             // 

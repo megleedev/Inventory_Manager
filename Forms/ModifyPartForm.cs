@@ -90,13 +90,7 @@ namespace InventoryManager.Forms
                 return;
             }
 
-            if (price < 0m)
-            {
-                MessageBox.Show("Price cannot be negative.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (min < 0 || max < 0 || inStock < 0)
+            if (price < 0m || min < 0 || max < 0 || inStock < 0)
             {
                 MessageBox.Show("Inventory, Min, and Max must be zero or greater.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
