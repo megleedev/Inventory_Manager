@@ -130,6 +130,7 @@
             btnModifyProduct.TabIndex = 8;
             btnModifyProduct.Text = "Modify";
             btnModifyProduct.UseVisualStyleBackColor = true;
+            btnModifyProduct.Click += btnModifyProduct_Click;
             // 
             // btnAddProduct
             // 

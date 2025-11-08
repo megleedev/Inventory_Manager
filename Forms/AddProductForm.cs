@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
+using System.Text;
 using System.Windows.Forms;
 using InventoryManager.Models;
 
@@ -66,7 +67,7 @@ namespace InventoryManager.Forms
             }
 
             var matches = Inventory.AllParts
-                .Where(p => p.Name.Contains(q, StringComparison.OrdinalIgnoreCase) 
+                .Where(p => p.Name.Contains(q, StringComparison.OrdinalIgnoreCase)
                 || p.PartID.ToString() == q)
                 .ToList();
 
@@ -78,6 +79,78 @@ namespace InventoryManager.Forms
             }
 
             dgvAllParts.DataSource = new BindingList<Part>(matches);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var errors = new StringBuilder();
+
+            // Basic validation
+            string name = txtName.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(name))
+                errors.AppendLine("Name cannot be empty.");
+
+            if (!int.TryParse(txtInStock.Text.Trim(), out int inStock))
+                errors.AppendLine("Inventory must be a whole number.");
+
+            if (!decimal.TryParse(txtPrice.Text.Trim(), NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal price))
+                errors.AppendLine("Price must be a valid currency amount (e.g., $12.50).");
+
+            if (!int.TryParse(txtMax.Text.Trim(), out int max))
+                errors.AppendLine("Max must be a whole number.");
+
+            if (!int.TryParse(txtMin.Text.Trim(), out int min))
+                errors.AppendLine("Min must be a whole number.");
+
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString(), "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (min > max)
+            {
+                MessageBox.Show("Min cannot be greater than Max.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (inStock < min || inStock > max)
+            {
+                MessageBox.Show("Inventory must be between Min and Max.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (price < 0m || min < 0 || max < 0 || inStock < 0)
+            {
+                MessageBox.Show("Price, Inventory, Min, and Max must be zero or greater.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int productId = Inventory.NextProductID();
+            txtId.Text = productId.ToString();
+
+            var product = new Product
+            {
+                ProductID = productId,
+                Name = name,
+                Price = price,
+                InStock = inStock,
+                Min = min,
+                Max = max
+            };
+
+            foreach (var p in _associated)
+                product.AssociatedParts.Add(p);
+
+            Inventory.addProduct(product);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

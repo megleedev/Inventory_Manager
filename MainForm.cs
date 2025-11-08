@@ -102,5 +102,19 @@ namespace InventoryManager
             using var dlg = new AddProductForm();
             dlg.ShowDialog(this);
         }
+
+        private void btnModifyProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow?.DataBoundItem is not Product selected)
+            {
+                MessageBox.Show("Please select a product to modify.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int rowIndex = dgvProducts.CurrentRow.Index;
+
+            using var dlg = new ModifyProductForm(selected, rowIndex);
+            dlg.ShowDialog(this);
+        }
     }
 }
