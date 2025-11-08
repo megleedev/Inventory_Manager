@@ -38,6 +38,9 @@
             btnDeleteProduct = new Button();
             btnModifyProduct = new Button();
             btnAddProduct = new Button();
+            btnSearchProducts = new Button();
+            txtSearchProducts = new TextBox();
+            btnExit = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvParts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -121,6 +124,7 @@
             btnDeleteProduct.TabIndex = 9;
             btnDeleteProduct.Text = "Delete";
             btnDeleteProduct.UseVisualStyleBackColor = true;
+            btnDeleteProduct.Click += btnDeleteProduct_Click;
             // 
             // btnModifyProduct
             // 
@@ -142,11 +146,41 @@
             btnAddProduct.UseVisualStyleBackColor = true;
             btnAddProduct.Click += btnAddProduct_Click;
             // 
+            // btnSearchProducts
+            // 
+            btnSearchProducts.Location = new Point(549, 64);
+            btnSearchProducts.Name = "btnSearchProducts";
+            btnSearchProducts.Size = new Size(75, 23);
+            btnSearchProducts.TabIndex = 11;
+            btnSearchProducts.Text = "Search";
+            btnSearchProducts.UseVisualStyleBackColor = true;
+            btnSearchProducts.Click += btnSearchProducts_Click;
+            // 
+            // txtSearchProducts
+            // 
+            txtSearchProducts.Location = new Point(630, 64);
+            txtSearchProducts.Name = "txtSearchProducts";
+            txtSearchProducts.Size = new Size(158, 23);
+            txtSearchProducts.TabIndex = 10;
+            // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(713, 406);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(75, 23);
+            btnExit.TabIndex = 12;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExit);
+            Controls.Add(btnSearchProducts);
+            Controls.Add(txtSearchProducts);
             Controls.Add(btnDeleteProduct);
             Controls.Add(btnModifyProduct);
             Controls.Add(btnAddProduct);
@@ -177,5 +211,8 @@
         private Button btnDeleteProduct;
         private Button btnModifyProduct;
         private Button btnAddProduct;
+        private Button btnSearchProducts;
+        private TextBox txtSearchProducts;
+        private Button btnExit;
     }
 }

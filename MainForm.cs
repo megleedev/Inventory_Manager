@@ -116,5 +116,70 @@ namespace InventoryManager
             using var dlg = new ModifyProductForm(selected, rowIndex);
             dlg.ShowDialog(this);
         }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow?.DataBoundItem is not Product selected)
+            {
+                MessageBox.Show("Please select a product to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // If product still has associated parts
+            if (selected.AssociatedParts.Count > 0)
+            {
+                MessageBox.Show("Cannot delete a product with associated parts.\n" + "Remove associated parts first.", "Delete Blocked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirm = MessageBox.Show($"Delete product '{selected.Name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Remove ID
+            bool removed = Inventory.removeProduct(selected.ProductID);
+
+            if (!removed)
+            {
+                MessageBox.Show("Product could not be removed (it may have been changed).", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearchProducts_Click(object sender, EventArgs e)
+        {
+            string query = txtSearchProducts.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                dgvProducts.DataSource = Inventory.Products;
+                return;
+            }
+
+            bool isId = int.TryParse(query, out int id);
+
+            var matches = Inventory.Products
+                .Where(p =>
+                (isId && p.ProductID == id) ||
+                (!string.IsNullOrEmpty(p.Name) &&
+                p.Name.IndexOf(query, StringComparison.CurrentCultureIgnoreCase) >= 0))
+            .ToList();
+
+            if (matches.Count == 0)
+            {
+                MessageBox.Show("No matching products found.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvProducts.DataSource = Inventory.Products;
+                return;
+            }
+
+            dgvProducts.DataSource = new BindingList<Product>(matches);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
