@@ -63,6 +63,9 @@ namespace InventoryManager.Models
             {
                 if (Products[i].ProductID == productID)
                 {
+                    if (Products[i].AssociatedParts.Count > 0)
+                        throw new InvalidOperationException("Cannot delete a product with associated parts.");
+
                     Products.RemoveAt(i);
                     return true;
                 }

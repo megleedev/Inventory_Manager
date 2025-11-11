@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using InventoryManager.Models;
@@ -11,10 +12,55 @@ namespace InventoryManager.Forms
         private readonly Part _originalPart = null!;
         private readonly int _rowIndex;
 
+        // Adds red color if validation is invalid, no color if valid
+        private void ColorRequired(TextBox tb, bool isValid)
+        {
+            tb.BackColor = isValid ? SystemColors.Window : Color.MistyRose;
+        }
+
+        // Re-runs validation color check for all fields on demand
+        private void UpdateValidationColor()
+        {
+            // Name: required, non-empty
+            ColorRequired(txtName, !string.IsNullOrWhiteSpace(txtName.Text));
+
+            // InStock: required int
+            ColorRequired(txtInStock, int.TryParse(txtInStock.Text.Trim(), out _));
+
+            // Price: required currency
+            ColorRequired(txtPrice, decimal.TryParse(
+                txtPrice.Text.Trim(),
+                NumberStyles.Currency,
+                CultureInfo.CurrentCulture,
+                out _));
+
+            // Min/Max: required int
+            ColorRequired(txtMin, int.TryParse(txtMin.Text.Trim(), out _));
+            ColorRequired(txtMax, int.TryParse(txtMax.Text.Trim(), out _));
+
+            // Var field based on radio
+            if (rdoInHouse.Checked)
+                ColorRequired(txtVar, int.TryParse(txtVar.Text.Trim(), out _));
+
+            else
+                ColorRequired(txtVar, !string.IsNullOrWhiteSpace(txtVar.Text));
+        }
+
+        private void WireValidationEvents()
+        {
+            txtName.TextChanged += (_, _) => UpdateValidationColor();
+            txtInStock.TextChanged += (_, _) => UpdateValidationColor();
+            txtPrice.TextChanged += (_, _) => UpdateValidationColor();
+            txtMin.TextChanged += (_, _) => UpdateValidationColor();
+            txtMax.TextChanged += (_, _) => UpdateValidationColor();
+            txtVar.TextChanged += (_, _) => UpdateValidationColor();
+        }
 
         public ModifyPartForm()
         {
             InitializeComponent();
+            WireValidationEvents();
+            UpdateValidationColor();
         }
 
         public ModifyPartForm(Part partToEdit, int rowIndex) : this()
@@ -23,6 +69,7 @@ namespace InventoryManager.Forms
             _rowIndex = rowIndex;
 
             this.Text = "Modify Part";
+            txtId.ReadOnly = true;
             LoadPartIntoControls();
         }
 
@@ -48,6 +95,8 @@ namespace InventoryManager.Forms
                 lblVar.Text = "Company Name";
                 txtVar.Text = os.CompanyName;
             }
+
+            UpdateValidationColor();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -92,7 +141,7 @@ namespace InventoryManager.Forms
 
             if (price < 0m || min < 0 || max < 0 || inStock < 0)
             {
-                MessageBox.Show("Inventory, Min, and Max must be zero or greater.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Price, Inventory, Min, and Max must be zero or greater.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -158,11 +207,18 @@ namespace InventoryManager.Forms
         private void rdoInHouse_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoInHouse.Checked) lblVar.Text = "Machine ID";
+            UpdateValidationColor();
         }
 
         private void rdoOutsourced_CheckedChanged(object sender, EventArgs e)
         {
             if (rdoOutsourced.Checked) lblVar.Text = "Company Name";
+            UpdateValidationColor();
+        }
+
+        private void ModifyPartForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

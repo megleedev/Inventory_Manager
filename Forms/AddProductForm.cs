@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using InventoryManager.Models;
 
@@ -8,20 +10,80 @@ namespace InventoryManager.Forms
 {
     public partial class AddProductForm : Form
     {
+        // Adds red color if validation is invalid, no color if valid
+        private void ColorRequired(TextBox tb, bool isValid)
+        {
+            tb.BackColor = isValid ? SystemColors.Window : Color.MistyRose;
+        }
+
+        // Re-runs validation color check for all fields on demand
+        private void UpdateValidationColor()
+        {
+            // Name: required, non-empty
+            ColorRequired(txtName, !string.IsNullOrWhiteSpace(txtName.Text));
+
+            // InStock: required int
+            ColorRequired(txtInStock, int.TryParse(txtInStock.Text.Trim(), out _));
+
+            // Price: required currency
+            ColorRequired(txtPrice, decimal.TryParse(
+                txtPrice.Text.Trim(),
+                NumberStyles.Currency,
+                CultureInfo.CurrentCulture,
+                out _));
+
+            // Min/Max: required int
+            ColorRequired(txtMin, int.TryParse(txtMin.Text.Trim(), out _));
+            ColorRequired(txtMax, int.TryParse(txtMax.Text.Trim(), out _));
+        }
+
+        private void WireValidationEvents()
+        {
+            txtName.TextChanged += (_, _) => UpdateValidationColor();
+            txtInStock.TextChanged += (_, _) => UpdateValidationColor();
+            txtPrice.TextChanged += (_, _) => UpdateValidationColor();
+            txtMin.TextChanged += (_, _) => UpdateValidationColor();
+            txtMax.TextChanged += (_, _) => UpdateValidationColor();
+        }
+
         private readonly BindingList<Part> _associated = new();
 
         public AddProductForm()
         {
             InitializeComponent();
+            WireValidationEvents();
+            UpdateValidationColor();
 
             txtId.ReadOnly = true;
             txtId.Text = Inventory.PeekNextProductID().ToString();
 
+            // All Parts Binding live list
             dgvAllParts.AutoGenerateColumns = true;
             dgvAllParts.DataSource = Inventory.AllParts;
 
+            // All Part grid behavior polish
+            dgvAllParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAllParts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvAllParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAllParts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvAllParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAllParts.MultiSelect = false;
+            dgvAllParts.ReadOnly = true;
+            dgvAllParts.AllowUserToAddRows = false;
+
+            // Associated Parts Binding live list
             dgvAssociatedParts.AutoGenerateColumns = true;
             dgvAssociatedParts.DataSource = _associated;
+
+            // Associated Parts grid behavior polish
+            dgvAssociatedParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAssociatedParts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvAssociatedParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAssociatedParts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvAssociatedParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAssociatedParts.MultiSelect = false;
+            dgvAssociatedParts.ReadOnly = true;
+            dgvAssociatedParts.AllowUserToAddRows = false;
         }
 
         private void btnAddPart_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,42 @@ namespace InventoryManager.Forms
 {
     public partial class ModifyProductForm : Form
     {
+        // Adds red color if validation is invalid, no color if valid
+        private void ColorRequired(TextBox tb, bool isValid)
+        {
+            tb.BackColor = isValid ? SystemColors.Window : Color.MistyRose;
+        }
+
+        // Re-runs validation color check for all fields on demand
+        private void UpdateValidationColor()
+        {
+            // Name: required, non-empty
+            ColorRequired(txtName, !string.IsNullOrWhiteSpace(txtName.Text));
+
+            // InStock: required int
+            ColorRequired(txtInStock, int.TryParse(txtInStock.Text.Trim(), out _));
+
+            // Price: required currency
+            ColorRequired(txtPrice, decimal.TryParse(
+                txtPrice.Text.Trim(),
+                NumberStyles.Currency,
+                CultureInfo.CurrentCulture,
+                out _));
+
+            // Min/Max: required int
+            ColorRequired(txtMin, int.TryParse(txtMin.Text.Trim(), out _));
+            ColorRequired(txtMax, int.TryParse(txtMax.Text.Trim(), out _));
+        }
+
+        private void WireValidationEvents()
+        {
+            txtName.TextChanged += (_, _) => UpdateValidationColor();
+            txtInStock.TextChanged += (_, _) => UpdateValidationColor();
+            txtPrice.TextChanged += (_, _) => UpdateValidationColor();
+            txtMin.TextChanged += (_, _) => UpdateValidationColor();
+            txtMax.TextChanged += (_, _) => UpdateValidationColor();
+        }
+
         private readonly Product _original;
         private readonly int _rowIndex;
         private readonly BindingList<Part> _associated = new();
@@ -16,24 +53,49 @@ namespace InventoryManager.Forms
         public ModifyProductForm(Product productToEdit, int rowIndex)
         {
             InitializeComponent();
+            WireValidationEvents();
+
             _original = productToEdit;
             _rowIndex = rowIndex;
 
             txtId.ReadOnly = true;
 
+            // All Parts Binding live list
             dgvAllParts.AutoGenerateColumns = true;
             dgvAllParts.DataSource = Inventory.AllParts;
 
+            // All Part grid behavior polish
+            dgvAllParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAllParts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvAllParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAllParts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvAllParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAllParts.MultiSelect = false;
+            dgvAllParts.ReadOnly = true;
+            dgvAllParts.AllowUserToAddRows = false;
+
+            // Associated Parts Binding live list
             dgvAssociatedParts.AutoGenerateColumns = true;
             dgvAssociatedParts.DataSource = _associated;
 
+            // Associated Parts grid behavior polish
+            dgvAssociatedParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAssociatedParts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvAssociatedParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAssociatedParts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvAssociatedParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAssociatedParts.MultiSelect = false;
+            dgvAssociatedParts.ReadOnly = true;
+            dgvAssociatedParts.AllowUserToAddRows = false;
+
             LoadProductIntoControls();
+            UpdateValidationColor();
         }
 
         private void LoadProductIntoControls()
         {
             txtId.Text = _original.ProductID.ToString();
-            txtName.Text = _original.Name.ToString();
+            txtName.Text = _original.Name;
             txtInStock.Text = _original.InStock.ToString();
             txtPrice.Text = _original.Price.ToString(CultureInfo.CurrentCulture);
             txtMax.Text = _original.Max.ToString();
@@ -172,6 +234,11 @@ namespace InventoryManager.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ModifyProductForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

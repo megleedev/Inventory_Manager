@@ -10,12 +10,33 @@ namespace InventoryManager
         {
             InitializeComponent();
 
-            // Binding live lists
+            // Part Binding live list
             dgvParts.AutoGenerateColumns = true;
             dgvParts.DataSource = Inventory.AllParts;
 
+            // Part grid behavior polish
+            dgvParts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvParts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvParts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvParts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvParts.MultiSelect = false;
+            dgvParts.ReadOnly = true;
+            dgvParts.AllowUserToAddRows = false;
+
+            // Product Binding live list
             dgvProducts.AutoGenerateColumns = true;
             dgvProducts.DataSource = Inventory.Products;
+
+            // Product grid behavior polish
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.MultiSelect = false;
+            dgvProducts.ReadOnly = true;
+            dgvProducts.AllowUserToAddRows = false;
         }
 
         private void btnAddPart_Click(object sender, EventArgs e)
@@ -33,8 +54,13 @@ namespace InventoryManager
                 return;
             }
 
-            // Get index in the BindingList so the correct item can be updated
-            int rowIndex = dgvParts.CurrentRow.Index;
+            int rowIndex = Inventory.AllParts.IndexOf(selectedPart);
+
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("Unable to locate the selected part.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             using var dlg = new ModifyPartForm(selectedPart, rowIndex);
             dlg.ShowDialog(this);
@@ -111,7 +137,13 @@ namespace InventoryManager
                 return;
             }
 
-            int rowIndex = dgvProducts.CurrentRow.Index;
+            int rowIndex = Inventory.Products.IndexOf(selected);
+
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("Unable to locate the selected product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             using var dlg = new ModifyProductForm(selected, rowIndex);
             dlg.ShowDialog(this);
@@ -139,12 +171,25 @@ namespace InventoryManager
                 return;
             }
 
-            // Remove ID
-            bool removed = Inventory.removeProduct(selected.ProductID);
-
-            if (!removed)
+            try
             {
-                MessageBox.Show("Product could not be removed (it may have been changed).", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Remove ID
+                bool removed = Inventory.removeProduct(selected.ProductID);
+
+                if (removed)
+                {
+                    MessageBox.Show($"Product '{selected.Name}' deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                else
+                {
+                    MessageBox.Show("Product could not be removed (it may have been changed).", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -180,6 +225,11 @@ namespace InventoryManager
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

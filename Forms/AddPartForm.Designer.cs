@@ -52,7 +52,7 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(12, 9);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(84, 25);
@@ -63,7 +63,7 @@
             // 
             rdoInHouse.AutoSize = true;
             rdoInHouse.Checked = true;
-            rdoInHouse.Location = new Point(291, 15);
+            rdoInHouse.Location = new Point(293, 15);
             rdoInHouse.Name = "rdoInHouse";
             rdoInHouse.Size = new Size(74, 19);
             rdoInHouse.TabIndex = 1;
@@ -74,7 +74,7 @@
             // rdoOutsourced
             // 
             rdoOutsourced.AutoSize = true;
-            rdoOutsourced.Location = new Point(482, 15);
+            rdoOutsourced.Location = new Point(484, 15);
             rdoOutsourced.Name = "rdoOutsourced";
             rdoOutsourced.Size = new Size(87, 19);
             rdoOutsourced.TabIndex = 2;
@@ -84,7 +84,7 @@
             // lblId
             // 
             lblId.AutoSize = true;
-            lblId.Location = new Point(291, 68);
+            lblId.Location = new Point(291, 77);
             lblId.Name = "lblId";
             lblId.Size = new Size(18, 15);
             lblId.TabIndex = 3;
@@ -93,7 +93,7 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(286, 119);
+            lblName.Location = new Point(286, 128);
             lblName.Name = "lblName";
             lblName.Size = new Size(39, 15);
             lblName.TabIndex = 4;
@@ -102,7 +102,7 @@
             // lblInStock
             // 
             lblInStock.AutoSize = true;
-            lblInStock.Location = new Point(286, 172);
+            lblInStock.Location = new Point(286, 181);
             lblInStock.Name = "lblInStock";
             lblInStock.Size = new Size(57, 15);
             lblInStock.TabIndex = 5;
@@ -111,7 +111,7 @@
             // lblPrice
             // 
             lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(286, 225);
+            lblPrice.Location = new Point(286, 234);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(33, 15);
             lblPrice.TabIndex = 6;
@@ -120,7 +120,7 @@
             // lblMax
             // 
             lblMax.AutoSize = true;
-            lblMax.Location = new Point(286, 281);
+            lblMax.Location = new Point(286, 290);
             lblMax.Name = "lblMax";
             lblMax.Size = new Size(29, 15);
             lblMax.TabIndex = 7;
@@ -129,7 +129,7 @@
             // lblMin
             // 
             lblMin.AutoSize = true;
-            lblMin.Location = new Point(543, 281);
+            lblMin.Location = new Point(543, 290);
             lblMin.Name = "lblMin";
             lblMin.Size = new Size(28, 15);
             lblMin.TabIndex = 8;
@@ -138,7 +138,7 @@
             // lblVar
             // 
             lblVar.AutoSize = true;
-            lblVar.Location = new Point(291, 338);
+            lblVar.Location = new Point(291, 347);
             lblVar.Name = "lblVar";
             lblVar.Size = new Size(67, 15);
             lblVar.TabIndex = 9;
@@ -146,7 +146,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(394, 65);
+            txtId.Location = new Point(394, 74);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(175, 23);
@@ -154,59 +154,59 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(394, 111);
+            txtName.Location = new Point(394, 120);
             txtName.Name = "txtName";
             txtName.Size = new Size(175, 23);
-            txtName.TabIndex = 11;
+            txtName.TabIndex = 0;
             // 
             // txtInStock
             // 
-            txtInStock.Location = new Point(394, 169);
+            txtInStock.Location = new Point(394, 178);
             txtInStock.Name = "txtInStock";
             txtInStock.Size = new Size(175, 23);
-            txtInStock.TabIndex = 12;
+            txtInStock.TabIndex = 1;
             // 
             // txtPrice
             // 
-            txtPrice.Location = new Point(394, 222);
+            txtPrice.Location = new Point(394, 231);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(175, 23);
-            txtPrice.TabIndex = 13;
+            txtPrice.TabIndex = 2;
             // 
             // txtMax
             // 
-            txtMax.Location = new Point(394, 278);
+            txtMax.Location = new Point(394, 287);
             txtMax.Name = "txtMax";
             txtMax.Size = new Size(100, 23);
-            txtMax.TabIndex = 14;
+            txtMax.TabIndex = 3;
             // 
             // txtMin
             // 
-            txtMin.Location = new Point(617, 278);
+            txtMin.Location = new Point(617, 287);
             txtMin.Name = "txtMin";
             txtMin.Size = new Size(100, 23);
-            txtMin.TabIndex = 15;
+            txtMin.TabIndex = 4;
             // 
             // txtVar
             // 
-            txtVar.Location = new Point(394, 335);
+            txtVar.Location = new Point(394, 344);
             txtVar.Name = "txtVar";
             txtVar.Size = new Size(175, 23);
-            txtVar.TabIndex = 17;
+            txtVar.TabIndex = 5;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(543, 401);
+            btnSave.Location = new Point(543, 407);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
-            btnSave.TabIndex = 19;
+            btnSave.TabIndex = 6;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(642, 401);
+            btnCancel.Location = new Point(642, 407);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 20;
@@ -219,7 +219,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 461);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtVar);
@@ -241,9 +241,8 @@
             Controls.Add(lblTitle);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "AddPartForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Part";
             ResumeLayout(false);
             PerformLayout();

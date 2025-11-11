@@ -1,13 +1,59 @@
 ﻿using System;
 using System.Text;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using InventoryManager.Models;
+using System.Drawing.Text;
 
 namespace InventoryManager.Forms
 {
     public partial class AddPartForm : Form
     {
+        // Adds red color if validation is invalid, no color if valid
+        private void ColorRequired(TextBox tb, bool isValid)
+        {
+            tb.BackColor = isValid ? SystemColors.Window : Color.MistyRose;
+        }
+
+        // Re-runs validation color check for all fields on demand
+        private void UpdateValidationColor()
+        {
+            // Name: required, non-empty
+            ColorRequired(txtName, !string.IsNullOrWhiteSpace(txtName.Text));
+
+            // InStock: required int
+            ColorRequired(txtInStock, int.TryParse(txtInStock.Text.Trim(), out _));
+
+            // Price: required currency
+            ColorRequired(txtPrice, decimal.TryParse(
+                txtPrice.Text.Trim(),
+                NumberStyles.Currency,
+                CultureInfo.CurrentCulture,
+                out _));
+
+            // Min/Max: required int
+            ColorRequired(txtMin, int.TryParse(txtMin.Text.Trim(), out _));
+            ColorRequired(txtMax, int.TryParse(txtMax.Text.Trim(), out _));
+
+            // Var field based on radio
+            if (rdoInHouse.Checked)
+                ColorRequired(txtVar, int.TryParse(txtVar.Text.Trim(), out _));
+
+            else
+                ColorRequired(txtVar, !string.IsNullOrWhiteSpace(txtVar.Text));
+        }
+
+        private void WireValidationEvents()
+        {
+            txtName.TextChanged += (_, _) => UpdateValidationColor();
+            txtInStock.TextChanged += (_, _) => UpdateValidationColor();
+            txtPrice.TextChanged += (_, _) => UpdateValidationColor();
+            txtMin.TextChanged += (_, _) => UpdateValidationColor();
+            txtMax.TextChanged += (_, _) => UpdateValidationColor();
+            txtVar.TextChanged += (_, _) => UpdateValidationColor();
+        }
+
         public AddPartForm()
         {
             InitializeComponent();
@@ -20,15 +66,21 @@ namespace InventoryManager.Forms
             txtId.ReadOnly = true;
             txtId.Text = Inventory.PeekNextPartID().ToString();
 
+            WireValidationEvents();
+            UpdateValidationColor();
+
+
             // Toggle the last label based on radio choice
             rdoInHouse.CheckedChanged += (_, _) =>
             {
                 if (rdoInHouse.Checked) lblVar.Text = "Machine ID";
+                UpdateValidationColor();
             };
 
             rdoOutsourced.CheckedChanged += (_, _) =>
             {
                 if (rdoOutsourced.Checked) lblVar.Text = "Company Name";
+                UpdateValidationColor();
             };
         }
 
